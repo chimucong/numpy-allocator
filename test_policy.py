@@ -1,7 +1,7 @@
-import py_allocator
+from npy_allocator import set_my_data_policy
 import numpy as np
-py_allocator.set_my_data_policy()
 
+set_my_data_policy()
 
 get_handler_name = np.core.multiarray.get_handler_name
 get_handler_version = np.core.multiarray.get_handler_version

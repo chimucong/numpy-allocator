@@ -8,9 +8,8 @@ try:
     USE_CYTHON = True
 except:
     pass
-# from Cython.Distutils import build_ext
 
-ext = '.pyx' if USE_CYTHON else '.c'
+ext = '.pyx' if USE_CYTHON else '.cpp'
 
 extensions = [
     Extension(

@@ -1,5 +1,5 @@
 ```bash
-pip install numpy cython
+pip install numpy>=1.22.0
 pip install .
 
 cd test

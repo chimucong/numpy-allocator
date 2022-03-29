@@ -1,13 +1,15 @@
-from npy_allocator import set_my_data_policy
+from numpy_allocator import init_mmap_file_allocator, set_file_allocator_directory
 import numpy as np
+from numpy.core.multiarray import get_handler_name, get_handler_version
+import os
 
-set_my_data_policy()
+arr1 = np.ndarray(shape=(1024, 1024, 1024), dtype=float)
+print('handler name:', get_handler_name(arr1),
+      ',version:', get_handler_version(arr1))
 
-get_handler_name = np.core.multiarray.get_handler_name
-get_handler_version = np.core.multiarray.get_handler_version
-orig_policy_name = get_handler_name()
+init_mmap_file_allocator()
+set_file_allocator_directory(os.path.expanduser('~'))
 
-arr = np.ndarray(shape=(2, 2), dtype=float)
-
-print(get_handler_name(arr))
-print(get_handler_version(arr))
+arr2 = np.ndarray(shape=(1024, 1024, 1024), dtype=float)
+print('handler name:', get_handler_name(arr2),
+      ',version:', get_handler_version(arr2))
